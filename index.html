@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>hqjs</title>
+    <link rel="icon" href="hqjs.png" sizes="16x16 32x32" type="image/png">
+    <link rel="stylesheet" href="/index.css">
+    <script>
+        window.onerror = function() {
+            document.open();
+            document.write("<h1>This is development website and it seems like your browser is not supported</h1><p>Try to install modern web browser and come back.</p>");
+            document.close();
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="navigation">
+            <a href="https://www.npmjs.com/package/@hqjs/hq">NPM</a>
+            <a href="https://github.com/hqjs/hq">GitHub</a>
+            <a href="mailto:hqjsorg@gmail.com">Contact</a>
+        </nav>
+        <h1>
+            <img src="/hq.png" alt="hqjs" width=150px height=167px>
+        </h1>
+        <h2 class="moto">Lightning fast, zero configuration, web application development server</h2>
+        <div class="logo js-logo">
+            <div class="copyright">Created by <a href="http://liquidlogos.xyz" target="_blank">© liquidlogos</a></div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="features">
+                <section>
+                    <h3>🎓 You already know it</h3>
+                    <p>
+                        It is just a static server that delivers your application code files
+                    </p>
+                </section>
+                <section>
+                    <h3>🏂 Zero configuration</h3>
+                    <p>
+                        One command and you are good to go
+                    </p>
+                </section>
+                <section>
+                    <h3>🏋️ Frameworks support</h3>
+                    <p>
+                        <strong>Polymer</strong>, <strong>Vue</strong>, <strong>React</strong>, <strong>Angular</strong> and many others out of the box
+                    </p>
+                </section>
+                <section>
+                    <h3>😎 Understands formats</h3>
+                    <p>
+                        <code>.js</code>, <code>.jsx</code>, <code>.mjs</code>, <code>.ts</code>,
+                        <code>.coffee</code>, <code>.json</code>, <code>.css</code>, <code>.scss</code>,
+                        <code>.sass</code>, <code>.less</code>, <code>.html</code> and <code>.pug</code>
+                    </p>
+                </section>
+                <section>
+                    <h3>🎁️ No bundling</h3>
+                    <p>
+                        To reflect project structure in the browser and make it easier to understand and develop
+                    </p>
+                </section>
+                <section>
+                    <h3>🦋 Better debugging</h3>
+                    <p>
+                        Names alligned with the code, debugging tooltips, breakpoints for specific line or expression
+                    </p>
+                </section>
+                <section>
+                    <h3>🕸 Latest web standards</h3>
+                    <p>
+                        You can use cutting edge features even if your browser lacks them
+                    </p>
+                </section>
+                <section>
+                    <h3>⚡ Light and fast</h3>
+                    <p>
+                        Ships minimum that is required with no bundlers overhead, only the files that were changed
+                    </p>
+                </section>
+            </div>
+            <section>
+                <h2>Installation</h2>
+                <p>
+                    Install it once with npm
+                    <code class="syntax">
+                        <span class="command">npm</span> install <span class="param">-g</span> <span class="content">@hqjs/hq</span>
+                    </code>
+                </p>
+            </section>
+            <section>
+                <h2>Usage</h2>
+                    Run inside project root
+                    <code class="syntax">
+                        <span class="command">hq</span>
+                    </code>
+            </section>
+            <section>
+                <h2>Why hq?</h2>
+                <p>
+                    <p>
+                        There are many development tools out there, including <strong>browserify</strong>, <strong>webpack</strong>, <strong>rollup</strong> and <strong>parcel</strong>,
+                        that provide development servers. But all of them rely on bundling. While bundling might still be usefull for production, it makes the development experience quite a struggle.
+                    </p>
+
+                    <p>
+                        Without bundling <strong>hq</strong> dramatically increases development speed by shipping only files that were changed and improves debugging by providing minimal transformation to a source.
+                    </p>
+
+                    <p>
+                        With <strong>hq</strong> you can start a new project instantly. Just type <strong>hq</strong> and you are ready for experiments.
+                        It supports all kinds of frameworks out of the box, so there is no need to learn all their different tools and know all the buzzwords.
+                    </p>
+
+                    <p>
+                        It is worth to say that <strong>hq</strong> requires no configuration, offering the familiar experience of working with a regular static server.
+                    </p>
+                </p>
+            </section>
+            <section>
+                <h2>Example</h2>
+                <p>
+                    Let's say we have an existing Angular project and want to improve development experience with <strong>hq</strong>.
+                </p>
+
+                <p>
+                    First of all, we need to add our global style file and script to the head and body of <code>index.html</code> correspondingly.
+                    So when <strong>hq</strong> serves index, it will serve styles and scripts as well
+                </p>
+
+<pre>
+<code class="syntax">
+&lt;!doctype html&gt;
+&lt;<span class="command">html</span> <span class="param">lang</span>=<span class="arg">"en"</span>&gt;
+&lt;<span class="command">head</span>&gt;
+    <span class="content">...</span>
+<span class="highlight">    &lt;<span class="command">link</span> <span class="param">rel</span>=<span class="arg">"stylesheet"</span> <span class="param">href</span>=<span class="arg">"/styles.css"</span>&gt;</span>
+&lt;/<span class="command">head</span>&gt;
+&lt;<span class="command">body</span>&gt;
+    &lt;<span class="command">app-root</span>&gt;&lt;/<span class="command">app-root</span>&gt;
+<span class="highlight">    &lt;<span class="command">script</span> <span class="param">src</span>=<span class="arg">"/main.ts"</span>&gt;&lt;/<span class="command">script</span>&gt;</span>
+&lt;/<span class="command">body</span>&gt;
+&lt;/<span class="command">html</span>&gt;
+</code>
+</pre>
+
+                <p>
+                    Second is a very Angular specific problem - it depends on <code>zones</code> and <code>Reflect.metadata</code> APIs
+                    that are on very early stages and are not supported by <strong>hq</strong> out of the box.
+                    In fact angular includes them in file <code>polyfills.ts</code> and adds the file to your build.
+                    So we are going to use the file and import it on top of <code>main.ts</code>
+                </p>                
+
+<pre>
+<code class="syntax">
+<span class="highlight"><span class="command">import</span> <span class="arg">'./polyfills.ts'</span>;</span>
+<span class="content">...</span>
+</code>
+</pre>
+
+                <p>
+                    And that's it, now you are ready to start developing by running <strong>hq</strong> in the project root.
+                </p>
+            </section>
+            <section>
+                <h2>More benefits with .babelrc</h2>
+                <p>
+                    With <strong>hq</strong> you don't need to take care of babel configuration, the latest ecma script standard
+                    (including class properties and decorators) will be supported out of the box.
+                    However if you need to support a feature that does not have a common interpretation (like svg react imports)
+                    or experimental features from an early stage (like optional chaining), just add <code>.babelrc</code> configuration
+                    to the root of your project with the list of all desired plugins
+<pre>
+<code class="syntax">
+{
+  <span class="command">"plugins"</span>: [
+    <span class="arg">"@babel/plugin-proposal-optional-chaining"</span>
+  ]
+}
+</code>
+</pre>
+                    and it will be automatically merged with <strong>hq</strong> configuration.
+                </p>
+            </section>
+            <section>
+                <h2>Looking for documentation? You don't need it!</h2>
+                <p>
+                    It just works out of the box. Install it now to create something fascinating
+                    <code class="syntax">
+                        <span class="command">npm</span> install <span class="param">-g</span> <span class="content">@hqjs/hq</span>
+                    </code>
+                </p>
+            </section>
+        </div>
+    </main>
+    <footer>Copyright © 2018 hqjs</footer>
+    <script type="module" src="/index.js"></script>
+</body>
+</span>

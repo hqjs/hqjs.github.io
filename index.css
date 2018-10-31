@@ -1,0 +1,133 @@
+body {
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: radial-gradient(ellipse at center, rgba(230, 100, 101, 0.75), transparent);
+}
+
+.moto {
+    font-size: 16px;
+    margin: 10px;
+}
+
+.navigation {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navigation > a {
+    color: white;
+    margin: 10px;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.navigation > a:last-child {
+    margin-right: 20px;
+}
+
+.navigation > a:hover {
+    color: red;
+}
+
+.copyright {
+    position: absolute;
+    z-index: 1;
+    color: #777;
+    bottom: 10px;
+    right: 20px;
+    user-select: none;
+}
+
+.copyright > a {
+    color: #777;
+}
+
+main {
+    color: black;
+    background-color: white;
+    width: 100%;
+    z-index: 1;
+    padding: 20px 0;
+}
+
+main section {
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.features > section {
+    width: 250px;
+    padding: 0 10px;
+}
+
+code {
+    font-size: 14px;
+}
+
+code.syntax {
+    display: block;
+    border-radius: 5px;
+    background-color: #333;
+    padding: 20px;
+    margin: 20px;
+    color: #aaa;
+    font-size: 18px;
+}
+
+code.syntax span.command {
+    color: red;
+}
+
+code.syntax span.param {
+    color: #abab46;
+}
+
+code.syntax span.arg {
+    color: #ccc;
+}
+
+code.syntax span.content {
+    color: white;
+}
+
+code.syntax span.highlight {
+    background-color: #4a5456;
+}
+
+.logo {
+    height: 535px;
+    width: 100%;
+    position: relative;
+}
+
+.logo > canvas {
+    transform: translate3d(0, -170px, 0);
+}
+
+footer {
+    margin: 20px;
+}
