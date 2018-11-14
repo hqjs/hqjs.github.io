@@ -73,6 +73,10 @@ main section {
     margin: auto;
 }
 
+.container > section {
+    padding: 0 10px;
+}
+
 .features {
     display: flex;
     flex-wrap: wrap;
