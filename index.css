@@ -126,6 +126,15 @@ code.syntax span.highlight {
     height: 535px;
     width: 100%;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.logo > img {
+    width: 450px;
+    height: 450px;
+    opacity: 0.85;
 }
 
 .logo > canvas {

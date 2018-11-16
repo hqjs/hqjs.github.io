@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="/index.css">
     <script>
         window.onerror = function() {
-            document.open();
-            document.write("<h1>This is development website and it seems like your browser is not supported</h1><p>Try to install modern web browser and come back.</p>");
-            document.close();
+            const img = document.createElement('img');
+            img.src = '/hqjs-logo.png';
+            document.querySelector('.js-logo').appendChild(img);
         }
     </script>
 </head>
