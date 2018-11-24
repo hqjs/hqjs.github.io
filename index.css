@@ -20,6 +20,7 @@ header {
 .moto {
     font-size: 16px;
     margin: 10px;
+    text-align: center;
 }
 
 .navigation {
@@ -90,6 +91,7 @@ main section {
 
 code {
     font-size: 14px;
+    overflow: scroll;
 }
 
 code.syntax {
@@ -129,6 +131,14 @@ code.syntax span.highlight {
     display: flex;
     justify-content: center;
     align-items: flex-start;
+}
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (orientation: portrait) {
+    .logo {
+        height: 285px;
+    }
 }
 
 .logo > img {
