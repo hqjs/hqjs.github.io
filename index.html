@@ -25,11 +25,16 @@
     /></noscript>
     <!-- End Facebook Pixel Code -->
     <script>
-        window.onerror = function() {
+        function setImgLogo(err) {
             const img = document.createElement('img');
             img.src = '/hqjs-logo.png';
-            document.querySelector('.js-logo').appendChild(img);
+            const canvas = document.querySelector('.js-logo > canvas');
+            if (canvas) canvas.remove();
+            const container = document.querySelector('.js-logo')
+            if (container) container.appendChild(img);
         }
+        window.onerror = setImgLogo;
+        window.onunhandledrejection = setImgLogo;
     </script>
 </head>
 <body>
