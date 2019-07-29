@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,20 +10,22 @@
     <link rel="stylesheet" href="/index.css">
     <!-- Facebook Pixel Code -->
     <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '365698893996837');
-    fbq('track', 'PageView');
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '365698893996837');
+        fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=365698893996837&ev=PageView&noscript=1"
-    /></noscript>
+            src="https://www.facebook.com/tr?id=365698893996837&ev=PageView&noscript=1" /></noscript>
     <!-- End Facebook Pixel Code -->
     <script>
         function setImgLogo(err) {
@@ -38,6 +41,7 @@
         window.onunhandledrejection = setImgLogo;
     </script>
 </head>
+
 <body>
     <header>
         <nav class="navigation">
@@ -72,14 +76,15 @@
                 <section>
                     <h3>🏋️ Frameworks support</h3>
                     <p>
-                        <strong>Polymer</strong>, <strong>Vue</strong>, <strong>React</strong>, <strong>Angular</strong> and many others out of the box
+                        <strong>Polymer</strong>, <strong>Svelte</strong>, <strong>Vue</strong>, <strong>React</strong>,
+                        <strong>Angular</strong> and many others out of the box
                     </p>
                 </section>
                 <section>
                     <h3>😎 Understands formats</h3>
                     <p>
-                        <code>.js</code>, <code>.jsx</code>, <code>.mjs</code>, <code>.vue</code>, <code>.ts</code>,
-                        <code>.coffee</code>, <code>.json</code>, <code>.css</code>, <code>.scss</code>,
+                        <code>.js(x)</code>, <code>.mjs</code>, <code>.svelte</code>, <code>.vue</code>,
+                        <code>.ts</code>, <code>.coffee</code>, <code>.json</code>, <code>.(s)css</code>,
                         <code>.sass</code>, <code>.less</code>, <code>.html</code> and <code>.pug</code>
                     </p>
                 </section>
@@ -119,8 +124,8 @@
             </section>
             <section>
                 <h2>Usage</h2>
-                    Run inside project root
-                    <code class="syntax">
+                Run inside project root
+                <code class="syntax">
                         <span class="command">hq</span>
                     </code>
             </section>
@@ -128,36 +133,44 @@
                 <h2>Why hq?</h2>
                 <p>
                     <p>
-                        There are many development tools out there, including <strong>browserify</strong>, <strong>webpack</strong>, <strong>rollup</strong> and <strong>parcel</strong>,
-                        that provide development servers. But all of them rely on bundling. While bundling might still be usefull for production, it makes the development experience quite a struggle.
+                        There are many development tools out there, including <strong>browserify</strong>,
+                        <strong>webpack</strong>, <strong>rollup</strong> and <strong>parcel</strong>,
+                        that provide development servers. But all of them rely on bundling. While bundling might still
+                        be usefull for production, it makes the development experience quite a struggle.
                     </p>
 
                     <p>
-                        Without bundling <strong>hq</strong> dramatically increases development speed by shipping only files that were changed and improves debugging by providing minimal transformation to a source.
+                        Without bundling <strong>hq</strong> dramatically increases development speed by shipping only
+                        files that were changed and improves debugging by providing minimal transformation to a source.
                     </p>
 
                     <p>
-                        With <strong>hq</strong> you can start a new project instantly. Just type <strong>hq</strong> and you are ready for experiments.
-                        It supports all kinds of frameworks out of the box, so there is no need to learn all their different tools and know all the buzzwords.
+                        With <strong>hq</strong> you can start a new project instantly. Just type <strong>hq</strong>
+                        and you are ready for experiments.
+                        It supports all kinds of frameworks out of the box, so there is no need to learn all their
+                        different tools and know all the buzzwords.
                     </p>
 
                     <p>
-                        It is worth to say that <strong>hq</strong> requires no configuration, offering the familiar experience of working with a regular static server.
+                        It is worth to say that <strong>hq</strong> requires no configuration, offering the familiar
+                        experience of working with a regular static server.
                     </p>
                 </p>
             </section>
             <section>
                 <h2>Example</h2>
                 <p>
-                    Let's say we have an existing Angular project and want to improve development experience with <strong>hq</strong>.
+                    Let's say we have an existing Angular project and want to improve development experience with
+                    <strong>hq</strong>.
                 </p>
 
                 <p>
-                    First of all, we need to add our global style file and script to the head and body of <code>index.html</code> correspondingly.
+                    First of all, we need to add our global style file and script to the head and body of
+                    <code>index.html</code> correspondingly.
                     So when <strong>hq</strong> serves index, it will serve styles and scripts as well
                 </p>
 
-<pre>
+                <pre>
 <code class="syntax">
 &lt;!doctype html&gt;
 &lt;<span class="command">html</span> <span class="param">lang</span>=<span class="arg">"en"</span>&gt;
@@ -174,32 +187,39 @@
 </pre>
 
                 <p>
-                    Second is a very Angular specific problem - it depends on <code>zones</code> and <code>Reflect.metadata</code> APIs
+                    Second is a very Angular specific problem - it depends on <code>zones</code> and
+                    <code>Reflect.metadata</code> APIs
                     that are on very early stages and are not supported by <strong>hq</strong> out of the box.
-                    In fact angular includes them in file <code>polyfills.ts</code> and adds the file to your build.
-                    So we are going to use the file and import it on top of <code>main.ts</code>
-                </p>                
+                    In fact angular includes them into your code during the build.
+                    So we are going to import necessary polyfills on top of <code>main.ts</code>
+                </p>
 
-<pre>
+                <pre>
 <code class="syntax">
-<span class="highlight"><span class="command">import</span> <span class="arg">'./polyfills.ts'</span>;</span>
+<span class="highlight"><span class="command">import</span> <span class="arg">'core-js/proposals/reflect-metadata'</span>;</span>
+<span class="highlight"><span class="command">import</span> <span class="arg">'zone.js/dist/zone'</span>;</span>
+<span class="highlight"><span class="command">import</span> <span class="arg">'zone.js/dist/zone-patch-canvas'</span>;</span>
 <span class="content">...</span>
 </code>
 </pre>
 
                 <p>
-                    And that's it, now you are ready to start developing by running <strong>hq</strong> in the project root.
+                    And that's it, now you are ready to start developing by running <strong>hq</strong> in the project
+                    root.
                 </p>
             </section>
             <section>
                 <h2>More benefits with .babelrc</h2>
                 <p>
-                    With <strong>hq</strong> you don't need to take care of babel configuration, the latest ecma script standard
+                    With <strong>hq</strong> you don't need to take care of babel configuration, the latest ecma script
+                    standard
                     (including class properties and decorators) will be supported out of the box.
-                    However if you need to support a feature that does not have a common interpretation (like svg react imports)
-                    or experimental features from an early stage (like optional chaining), just add <code>.babelrc</code> configuration
+                    However if you need to support a feature that does not have a common interpretation (like svg react
+                    imports)
+                    or experimental features from an early stage (like optional chaining), just add
+                    <code>.babelrc</code> configuration
                     to the root of your project with the list of all desired plugins
-<pre>
+                    <pre>
 <code class="syntax">
 {
   <span class="command">"plugins"</span>: [
@@ -225,4 +245,5 @@
     <footer>Copyright © 2018-2019 hqjs</footer>
     <script type="module" src="/index.js"></script>
 </body>
+
 </html>
