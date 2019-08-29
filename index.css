@@ -89,6 +89,10 @@ main section {
     padding: 0 10px;
 }
 
+.vscode-section {
+    line-height: 38px;
+}
+
 .vscode-link {
     background-color: #333;
     color: #ccc;
