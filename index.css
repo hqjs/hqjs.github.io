@@ -89,6 +89,48 @@ main section {
     padding: 0 10px;
 }
 
+.vscode-link {
+    background-color: #333;
+    color: #ccc;
+    text-decoration: none;
+    padding: 8px 5px;
+    border-radius: 3px;
+    margin: 0 8px;
+}
+
+.vscode-icon {
+    position: relative;
+    top: 5px;
+    width: 22px;
+    height: 22px;
+}
+
+.vscode-separator {
+    width: 1px;
+    height: 28px;
+    display: inline-block;
+    background-color: #777;
+    vertical-align: middle;
+    margin: 2px;
+}
+
+.vscode-golive {
+    text-decoration: none;
+    background-color: #21252b;
+    color: white;
+    fill: white;
+    margin: 0 5px;
+    padding: 8px;
+    font-weight: lighter;
+}
+
+.vscode-golive svg {
+    position: relative;
+    top: 4px;
+    width: 20px;
+    height: 20px;
+}
+
 code {
     font-size: 14px;
     overflow: scroll;
