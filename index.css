@@ -7,6 +7,7 @@ body {
     margin: 0;
     padding: 0;
     color: white;
+    line-height: 22px;
 }
 
 header {
@@ -186,7 +187,7 @@ code.syntax span.highlight {
 }
 
 .logo > canvas {
-    transform: translate3d(0, -170px, 0);
+    transform: translate3d(0, -290px, 0);
 }
 
 footer {
@@ -194,13 +195,10 @@ footer {
 }
 
 @media only screen 
-  and (min-device-width: 320px) 
-  and (orientation: portrait) {
+and (min-device-width: 320px) 
+and (orientation: portrait) {
     .logo {
         height: 285px;
-    }
-    .logo > canvas {
-        transform: translate3d(0, -155px, 0);
     }
     .logo > img {
         width: 285px;

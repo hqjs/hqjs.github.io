@@ -4,7 +4,7 @@
 
 import Memory from '/memory-vectors.js';
 import GL from '/gl-utils.js';
-import {getRnd, random, randomInt} from '/math-utils.js';
+import { getRnd, random, randomInt } from '/math-utils.js';
 
 class Logo {
   constructor(element, logo, {
@@ -76,7 +76,7 @@ class Logo {
         group: {
           logo: {
             init: (i, vec) => {
-              if(this.cfg.randomPos) vec.rand(-this.cfg.initRadius, this.cfg.initRadius);
+              if (this.cfg.randomPos) vec.rand(-this.cfg.initRadius, this.cfg.initRadius);
               else vec.init(logo.vertices, 2 * i);
             },
             size: this.length
@@ -144,7 +144,7 @@ class Logo {
         group: {
           logo: {
             init: (i, vec, ref) => {
-              if(this.cfg.randomAlpha) ref[i] = random(this.cfg.minParticleAlpha, this.cfg.maxParticleAlpha);
+              if (this.cfg.randomAlpha) ref[i] = random(this.cfg.minParticleAlpha, this.cfg.maxParticleAlpha);
               else ref[i] = logo.colors[4 * i + 3];
             },
             size: this.length
@@ -191,56 +191,42 @@ class Logo {
     });
 
     (async () => {
-        const particle = '/particle.png';
-        const vertexShaderPromise = fetch('/lights.vert').then(res => res.text());
-        const fragmentShaderPromise = fetch('/lights.frag').then(res => res.text());
+      const particle = '/particle.png';
+      const vertexShaderPromise = fetch('/lights.vert').then(res => res.text());
+      const fragmentShaderPromise = fetch('/lights.frag').then(res => res.text());
 
-        const [vertexShader, fragmentShader] = await Promise.all([
-            vertexShaderPromise,
-            fragmentShaderPromise
-        ]);
+      const [vertexShader, fragmentShader] = await Promise.all([
+        vertexShaderPromise,
+        fragmentShaderPromise
+      ]);
 
-        this.gl = new GL({
+      this.gl = new GL({
         width: this.width,
         height: this.height,
         selector: this.element
-        });
-        this.gl.enableAlpha();
-        this.gl.enableExtension('OES_texture_float');
-        this.gl.context.clearColor(0, 0, 0, 0);
-        this.gl.createVertexShader('particles', vertexShader);
-        this.gl.createFragmentShader('particles', fragmentShader);
-        this.gl.createProgram('main', 'particles', 'particles');
-        this.ptexture = this.gl.createTexture('positions', {
-        width: this.memory.views.positions.length / 4,
-        height: 1,
-        data: this.memory.views.positions
-        }, {itype: this.gl.context.FLOAT});
-        this.vtexture = this.gl.createTexture('velocities', {
-        width: this.memory.views.positions.length / 4,
-        height: 1,
-        data: this.memory.views.positions
-        }, {itype: this.gl.context.FLOAT});
-        this.pbuffer0 = this.gl.createFrameBuffer('positions', this.ptexture);
-        this.vbuffer0 = this.gl.createFrameBuffer('velocities', this.vtexture);
-        this.gl.releaseFrameBuffer();
-        this.mainProgram = this.gl.useProgram('main');
-        GL.loadImage(particle)
+      });
+      this.gl.enableAlpha();
+      this.gl.context.clearColor(0, 0, 0, 0);
+      this.gl.createVertexShader('particles', vertexShader);
+      this.gl.createFragmentShader('particles', fragmentShader);
+      this.gl.createProgram('main', 'particles', 'particles');
+      this.mainProgram = this.gl.useProgram('main');
+      GL.loadImage(particle)
         .then(image => {
-            this.gl.createTexture('particle', image);
-            this.gl.activateTexture('particle', 0);
-            this.mainProgram.attachUniform({
+          this.gl.createTexture('particle', image);
+          this.gl.activateTexture('particle', 0);
+          this.mainProgram.attachUniform({
             data: image,
             name: 'u_Texture',
             slot: 0
-            });
+          });
         })
         .then(() => {
-            this._initData();
-            this.animate();
+          this._initData();
+          this.animate();
         });
 
-        this.subscribeEvents();
+      this.subscribeEvents();
     })();
   }
 
@@ -249,6 +235,7 @@ class Logo {
     this.offsetY = this.element.offsetTop;
     this.height = this.element.parentNode.clientHeight;
     this.width = this.element.parentNode.clientWidth;
+    this.shift = this.width > 970 ? 0.3 : 0.47;
     const maxRes = Math.max(this.width, this.height);
     this.resolution = [
       this.height / maxRes,
@@ -271,7 +258,7 @@ class Logo {
       name: 'a_Size',
       size: 1
     });
-    this.gl.createBuffer('colors', this.memory.views.alphas);
+    this.gl.createBuffer('alphas', this.memory.views.alphas);
     this.mainProgram.attachAttribute({
       name: 'a_Alpha',
       size: 1
@@ -281,19 +268,20 @@ class Logo {
       name: 'u_Res',
       type: '2fv'
     });
-    this.updateScale();
-    this.positionsBuffer = this.gl.createBuffer('positions', this.memory.views.positions);
-    this.mainProgram.attachAttribute({
-      name: 'a_Position',
-      dtype: this.gl.context.STREAM_DRAW
+    this.mainProgram.attachUniform({
+      data: this.shift,
+      name: 'u_Shift',
+      type: '1f'
     });
-  }
-
-  updateScale() {
     this.mainProgram.attachUniform({
       data: this.cfg.scale,
       name: 'u_Scale',
       type: '1f'
+    });
+    this.positionsBuffer = this.gl.createBuffer('positions', this.memory.views.positions);
+    this.mainProgram.attachAttribute({
+      name: 'a_Position',
+      dtype: this.gl.context.STREAM_DRAW
     });
   }
 
@@ -316,13 +304,13 @@ class Logo {
   _moveLogo() {
     const dir = this.memory.dir;
     const mouse = this.memory.mouse;
-    for(let i = 0; i < this.length; i++) {
+    for (let i = 0; i < this.length; i++) {
       const point = this.memory.positions.logo[i];
       dir.copy(mouse)
         .sub(point);
       const distSq = dir.lenSq();
       const origPoint = this.memory.logo[i];
-      if(distSq < Math.pow(this.cfg.radius / this.cfg.scale, 2)) {
+      if (distSq < Math.pow(this.cfg.radius / this.cfg.scale, 2)) {
         point.sub(dir.scale(this.cfg.softRadius / distSq / this.cfg.scale));
       }
 
@@ -333,12 +321,12 @@ class Logo {
   _moveFree() {
     const dir = this.memory.dir;
     const mouse = this.memory.mouse;
-    for(let i = 0; i < this.cfg.freeAmount; i++) {
+    for (let i = 0; i < this.cfg.freeAmount; i++) {
       const point = this.memory.positions.free[i];
       dir.copy(mouse)
         .sub(point);
       const distSq = dir.lenSq();
-      if(distSq < Math.pow(this.cfg.radius / this.cfg.scale, 2)) {
+      if (distSq < Math.pow(this.cfg.radius / this.cfg.scale, 2)) {
         point.sub(dir.scale(this.cfg.softRadius / distSq / this.cfg.scale));
       }
 
@@ -348,7 +336,7 @@ class Logo {
 
   _brownianMove(index, point, origPoint) {
     const brownVector = this.memory.brownians.logo[index];
-    if(this.frameCounter % this.memory.frames.logo[index] === 0) {
+    if (this.frameCounter % this.memory.frames.logo[index] === 0) {
       const alpha = 2 * Math.PI * getRnd();
       brownVector
         .of(Math.sin(alpha), Math.cos(alpha))
@@ -363,7 +351,7 @@ class Logo {
 
   _freeBrownianMove(index, point) {
     const brownVector = this.memory.brownians.free[index];
-    if(this.frameCounter % this.memory.frames.free[index] === 0) {
+    if (this.frameCounter % this.memory.frames.free[index] === 0) {
       const width = this.freeWidth;
       const height = this.freeHeight;
       brownVector
@@ -390,7 +378,7 @@ class Logo {
   onReset() {
     const width = this.cfg.initRadius;
     const height = this.cfg.initRadius;
-    for(let i = 0; i < this.length; i++) {
+    for (let i = 0; i < this.length; i++) {
       this.memory.positions.logo[i].rand([-width, -height], [width, height]);
     }
     this.gl.bindBuffer(this.positions, {
@@ -407,6 +395,11 @@ class Logo {
       name: 'u_Res',
       type: '2fv'
     });
+    this.mainProgram.attachUniform({
+      data: this.shift,
+      name: 'u_Shift',
+      type: '1f'
+    });
     this.gl.context.viewport(0, 0, this.width, this.height);
   }
 
@@ -414,7 +407,7 @@ class Logo {
     this.scrollLeft = 0;
     this.scrollTop = 0;
     let element = this.element;
-    while(element !== document.body) {
+    while (element !== document.body) {
       this.scrollLeft += element.scrollLeft;
       this.scrollTop += element.scrollTop;
       element = element.parentElement;
@@ -428,7 +421,7 @@ class Logo {
     const clientY = event.offsetY;
     const mouse = this.memory.mouse;
     mouse.x = ((clientX / this.width) * 2 - 1) / this.cfg.scale / this.resolution[0];
-    mouse.y = (1 - (clientY / this.height) * 2) / this.cfg.scale / this.resolution[1];
+    mouse.y = (1 - (clientY / this.height) * 2) / this.cfg.scale / this.resolution[1] + 2 * this.shift;
   }
 
   onMouseDown() {

@@ -8,7 +8,7 @@ const a = 1069;
 const b = 7368787;
 const m = 9925439;
 let x = 1;
-for(let i = 0; i < rsize; i++) {
+for (let i = 0; i < rsize; i++) {
   x = (a * x + b) % m;
   rnd[i] = x / m;
 }

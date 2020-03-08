@@ -23,7 +23,7 @@ export default class GL {
     return rect;
   }
 
-  constructor({width, height, selector, options}) {
+  constructor({ width, height, selector, options }) {
     this.setupCanvas(width, height, selector);
     this.setupGLContext(options);
     this.extensions = {};
@@ -39,11 +39,11 @@ export default class GL {
     const element = selector instanceof HTMLElement ?
       selector :
       document.querySelector(selector);
-    if(!element) {
+    if (!element) {
       this.canvas = document.createElement('canvas');
       document.body.appendChild(this.canvas);
     } else {
-      if(element instanceof HTMLCanvasElement) {
+      if (element instanceof HTMLCanvasElement) {
         this.canvas = element;
       } else {
         this.canvas = document.createElement('canvas');
@@ -74,7 +74,7 @@ export default class GL {
 
   enableExtension(extname) {
     const ext = this.context.getExtension(extname);
-    if(!ext) {
+    if (!ext) {
       throw new Error(`Extension ${extname} is not supported on this system`);
     }
     this.extensions[extname] = ext;
@@ -117,7 +117,7 @@ export default class GL {
     btype = this.context.ARRAY_BUFFER,
     dtype = this.context.STATIC_DRAW
   } = {}) {
-    this.buffers[id] = new BufferGL(this.context, data, {btype, dtype});
+    this.buffers[id] = new BufferGL(this.context, data, { btype, dtype });
     return this.buffers[id];
   }
 
@@ -139,7 +139,7 @@ export default class GL {
     attachment = this.context.COLOR_ATTACHMENT0,
     ttarget = this.context.TEXTURE_2D
   } = {}) {
-    this.framebuffers[id] = new FrameBufferGL(this.context, texture, {attachment, ttarget});
+    this.framebuffers[id] = new FrameBufferGL(this.context, texture, { attachment, ttarget });
     return this.framebuffers[id];
   }
 
@@ -213,7 +213,7 @@ class BufferGL {
     this.btype = btype;
     this.dtype = dtype;
     this.buffer = this.context.createBuffer();
-    if(!this.buffer) {
+    if (!this.buffer) {
       this.delete();
       throw new Error('Failed to create vertex buffer object');
     }
@@ -241,7 +241,7 @@ class FrameBufferGL {
   } = {}) {
     this.context = context;
     this.framebuffer = this.context.createFramebuffer();
-    if(!this.framebuffer) {
+    if (!this.framebuffer) {
       this.delete();
       throw new Error('Failed to create frame buffer object');
     }
@@ -299,7 +299,7 @@ class Texture {
 
   create(data) {
     this.texture = this.context.createTexture();
-    if(!this.texture) {
+    if (!this.texture) {
       this.delete();
       throw new Error('Failed to create texture object');
     }
@@ -310,7 +310,7 @@ class Texture {
     this.context.texParameteri(this.ttype, this.context.TEXTURE_WRAP_T, this.wrapt);
     this.context.texParameteri(this.ttype, this.context.TEXTURE_MIN_FILTER, this.minfilter);
     this.context.texParameteri(this.ttype, this.context.TEXTURE_MAG_FILTER, this.magfilter);
-    if(data.data === null || ArrayBuffer.isView(data.data)) {
+    if (data.data === null || ArrayBuffer.isView(data.data)) {
       this.context.texImage2D(
         this.ttype,
         this.lod,
@@ -325,7 +325,7 @@ class Texture {
     } else {
       this.context.texImage2D(this.ttype, this.lod, this.iformat, this.format, this.itype, data);
     }
-    if(this.mipmap) this.context.generateMipmap(this.ttype);
+    if (this.mipmap) this.context.generateMipmap(this.ttype);
   }
 
   delete() {
@@ -354,7 +354,7 @@ class Program {
     this.context.attachShader(this.program, this.vshader.shader);
     this.context.attachShader(this.program, this.fshader.shader);
     this.context.linkProgram(this.program);
-    if(!this.context.getProgramParameter(this.program, this.context.LINK_STATUS)) {
+    if (!this.context.getProgramParameter(this.program, this.context.LINK_STATUS)) {
       this.delete();
       throw new Error('Unable to initialize the shader program.');
     }
@@ -371,7 +371,7 @@ class Program {
   getAttribLocation(name) {
     const attribute = this.context.getAttribLocation(this.program, name);
     this.context.enableVertexAttribArray(attribute);
-    if(attribute < 0) {
+    if (attribute < 0) {
       throw new Error(`Failed to get the storage location of attribute ${name}`);
     }
     return attribute;
@@ -381,7 +381,7 @@ class Program {
     type = this.context.FLOAT,
     normalized = false
   } = {}) {
-    for(const [name, {
+    for (const [name, {
       size = 2,
       stride = 0,
       offset = 0
@@ -403,7 +403,7 @@ class Program {
     offset = 0
   }) {
     const attribute = this.getAttribLocation(name);
-    switch(atype) {
+    switch (atype) {
       case 'array':
         this.context.vertexAttribPointer(attribute, size, type, normalized, stride, offset);
         this.context.enableVertexAttribArray(attribute);
@@ -423,7 +423,7 @@ class Program {
 
   getUniformLocation(name) {
     const uniform = this.context.getUniformLocation(this.program, name);
-    if(!uniform) {
+    if (!uniform) {
       throw new Error(`Failed to get location of uniform ${name}`);
     }
     return uniform;
@@ -436,7 +436,7 @@ class Program {
     type = 'sampler2D'
   } = {}) {
     const uniform = this.getUniformLocation(name);
-    switch(type) {
+    switch (type) {
       case 'sampler2D':
         this.context.uniform1i(uniform, slot);
         // this.context.uniform1iv(sampler2DUniformLoc, [v]);           // для sampler2D или массива sampler2D
@@ -473,7 +473,7 @@ class Shader {
     this.shader = this.context.createShader(this.type);
     this.context.shaderSource(this.shader, src);
     this.context.compileShader(this.shader);
-    if(!this.context.getShaderParameter(this.shader, this.context.COMPILE_STATUS)) {
+    if (!this.context.getShaderParameter(this.shader, this.context.COMPILE_STATUS)) {
       const info = this.context.getShaderInfoLog(this.shader);
       this.delete();
       throw new Error(`An error occurred compiling the shaders: ${info}`);
@@ -484,7 +484,7 @@ class Shader {
     this.context.deleteShader(this.shader);
   }
 }
-class FragmentShader extends Shader {}
+class FragmentShader extends Shader { }
 class VertexShader extends Shader {
   constructor(context, src) {
     super(context, src, context.VERTEX_SHADER);
