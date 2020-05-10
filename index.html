@@ -1,197 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>hqjs</title>
-    <link rel="icon" href="hqjs.png" sizes="16x16 32x32" type="image/png">
-    <link rel="stylesheet" href="/index.css">
-    <!-- Facebook Pixel Code -->
-    <script>
-        !function (f, b, e, v, n, t, s) {
-            if (f.fbq) return; n = f.fbq = function () {
-                n.callMethod ?
-                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-            };
-            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-            n.queue = []; t = b.createElement(e); t.async = !0;
-            t.src = v; s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s)
-        }(window, document, 'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '365698893996837');
-        fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-            src="https://www.facebook.com/tr?id=365698893996837&ev=PageView&noscript=1" /></noscript>
-    <!-- End Facebook Pixel Code -->
-    <script>
-        function setImgLogo(err) {
-            const img = document.createElement('img');
-            img.src = '/hqjs-logo.png';
-            const canvas = document.querySelector('.js-logo > canvas');
-            if (canvas) canvas.remove();
-            const container = document.querySelector('.js-logo')
-            if (container) container.appendChild(img);
-            window.error = err;
-        }
-        window.onerror = setImgLogo;
-        window.onunhandledrejection = setImgLogo;
-    </script>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>hqjs</title>
+        <link rel="icon" href="hqjs.png" sizes="16x16 32x32" type="image/png">
+        <link rel="stylesheet" href="/index.css">
+        <!-- Facebook Pixel Code -->
+        <script>
+            !function (f, b, e, v, n, t, s) {
+                if (f.fbq) 
+                    return;
+                n = f.fbq = function () {
+                    n.callMethod
+                        ? n
+                            .callMethod
+                            .apply(n, arguments)
+                        : n
+                            .queue
+                            .push(arguments)
+                };
+                if (!f._fbq) 
+                    f._fbq = n;
+                n.push = n;
+                n.loaded = !0;
+                n.version = '2.0';
+                n.queue = [];
+                t = b.createElement(e);
+                t.async = !0;
+                t.src = v;
+                s = b.getElementsByTagName(e)[0];
+                s
+                    .parentNode
+                    .insertBefore(t, s)
+            }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '365698893996837');
+            fbq('track', 'PageView');
+        </script>
+        <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=365698893996837&ev=PageView&noscript=1"/></noscript>
+        <!-- End Facebook Pixel Code -->
+        <script>
+            function setImgLogo(err) {
+                const img = document.createElement('img');
+                img.src = '/hqjs-logo.png';
+                const canvas = document.querySelector('.js-logo > canvas');
+                if (canvas) 
+                    canvas.remove();
+                const container = document.querySelector('.js-logo')
+                if (container) 
+                    container.appendChild(img);
+                window.error = err;
+            }
+            window.onerror = setImgLogo;
+            window.onunhandledrejection = setImgLogo;
+        </script>
+    </head>
 
-<body>
-    <header>
-        <nav class="navigation">
-            <a href="https://medium.com/@hqjsorg" target="_blank">Blog</a>
-            <a href="https://www.npmjs.com/package/@hqjs/hq" target="_blank">NPM</a>
-            <a href="https://github.com/hqjs/hq" target="_blank">GitHub</a>
-            <a href="mailto:hqjs.org@gmail.com">Contact</a>
-        </nav>
-        <h1>
-            <img src="/hq.png" alt="hqjs" width=150px height=167px>
-        </h1>
-        <h2 class="moto">Lightning fast, zero configuration, web application development server</h2>
-        <div class="logo js-logo">
-            <div class="copyright">Created by <a href="http://liquidlogos.xyz" target="_blank">© liquidlogos</a></div>
-        </div>
-    </header>
-    <main>
-        <div class="container">
-            <div class="features">
-                <section>
-                    <h3>🎓 You already know it</h3>
-                    <p>
-                        It is just a static server that delivers your application code files
-                    </p>
-                </section>
-                <section>
-                    <h3>🏂 Zero configuration</h3>
-                    <p>
-                        One command and you are good to go
-                    </p>
-                </section>
-                <section>
-                    <h3>🏋️ Frameworks support</h3>
-                    <p>
-                        <strong>Polymer</strong>, <strong>Svelte</strong>, <strong>Vue</strong>, <strong>React</strong>,
-                        <strong>Angular</strong> and many others out of the box
-                    </p>
-                </section>
-                <section>
-                    <h3>😎 Understands formats</h3>
-                    <p>
-                        <code>.js(x)</code>, <code>.mjs</code>, <code>.ts(x)</code>, <code>.svelte</code>,
-                        <code>.vue</code>, <code>.coffee</code>, <code>.json</code>, <code>.(s)css</code>,
-                        <code>.sass</code>, <code>.less</code>, <code>.html</code> and <code>.pug</code>
-                    </p>
-                </section>
-                <section>
-                    <h3>🎁️ No bundling</h3>
-                    <p>
-                        To reflect project structure in the browser and make it easier to understand and develop
-                    </p>
-                </section>
-                <section>
-                    <h3>🦋 Better debugging</h3>
-                    <p>
-                        Names alligned with the code, debugging tooltips, breakpoints for specific line or expression
-                    </p>
-                </section>
-                <section>
-                    <h3>🕸 Latest web standards</h3>
-                    <p>
-                        You can use cutting edge features even if your browser lacks them
-                    </p>
-                </section>
-                <section>
-                    <h3>⚡ Light and fast</h3>
-                    <p>
-                        Ships minimum that is required with no bundlers overhead, only the files that were changed
-                    </p>
-                </section>
+    <body>
+        <header>
+            <nav class="navigation">
+                <a href="https://medium.com/@hqjsorg" target="_blank">Blog</a>
+                <a href="https://www.npmjs.com/package/@hqjs/hq" target="_blank">NPM</a>
+                <a href="https://github.com/hqjs/hq" target="_blank">GitHub</a>
+                <a href="mailto:hqjs.org@gmail.com">Contact</a>
+            </nav>
+            <h1>
+                <img src="/hq.png" alt="hqjs" width="150px" height="167px">
+            </h1>
+            <h2 class="moto">Lightning fast, zero configuration, web application development server</h2>
+            <div class="logo js-logo">
+                <div class="copyright">Created by
+                    <a href="http://liquidlogos.xyz" target="_blank">© liquidlogos</a>
+                </div>
             </div>
-            <section>
-                <h2>VSCode extension</h2>
-                <p class="vscode-section">
-                    Get <a class="vscode-link"
-                        href="https://marketplace.visualstudio.com/items?itemName=hqjs.hq-live-server" target="_blank">
-                        <img src="/vscode.png" class="vscode-icon" alt="VSCode">
-                        <span class="vscode-separator"></span>
-                        Visual Studio Code Extension
-                    </a> and
-                    run hq with single
-                    <a class="vscode-golive"
-                        href="https://marketplace.visualstudio.com/items?itemName=hqjs.hq-live-server" target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M9 9H8c.55 0 1-.45 1-1V7c0-.55-.45-1-1-1H7c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1H6c-.55 0-1 .45-1 1v2h1v3c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-3h1v-2c0-.55-.45-1-1-1zM7 7h1v1H7V7zm2 4H8v4H7v-4H6v-1h3v1zm2.09-3.5c0-1.98-1.61-3.59-3.59-3.59A3.593 3.593 0 0 0 4 8.31v1.98c-.61-.77-1-1.73-1-2.8 0-2.48 2.02-4.5 4.5-4.5S12 5.01 12 7.49c0 1.06-.39 2.03-1 2.8V8.31c.06-.27.09-.53.09-.81zm3.91 0c0 2.88-1.63 5.38-4 6.63v-1.05a6.553 6.553 0 0 0 3.09-5.58A6.59 6.59 0 0 0 7.5.91 6.59 6.59 0 0 0 .91 7.5c0 2.36 1.23 4.42 3.09 5.58v1.05A7.497 7.497 0 0 1 7.5 0C11.64 0 15 3.36 15 7.5z" />
-                        </svg>
-                        Go Live
-                    </a>
-                    button click.
-                </p>
-            </section>
-            <section>
-                <h2>Installation</h2>
-                <p>
-                    Install it once with npm
+        </header>
+        <main>
+            <div class="container">
+                <div class="features">
+                    <section>
+                        <h3>🎓 You already know it</h3>
+                        <p>
+                            It is just a static server that delivers your application code files
+                        </p>
+                    </section>
+                    <section>
+                        <h3>🏂 Zero configuration</h3>
+                        <p>
+                            One command and you are good to go
+                        </p>
+                    </section>
+                    <section>
+                        <h3>🏋️ Frameworks support</h3>
+                        <p>
+                            <strong>Polymer</strong>,
+                            <strong>Svelte</strong>,
+                            <strong>Vue</strong>,
+                            <strong>React</strong>,
+                            <strong>Angular</strong>
+                            and many others out of the box
+                        </p>
+                    </section>
+                    <section>
+                        <h3>😎 Understands formats</h3>
+                        <p>
+                            <code>.js(x)</code>,
+                            <code>.mjs</code>,
+                            <code>.ts(x)</code>,
+                            <code>.svelte</code>,
+                            <code>.vue</code>,
+                            <code>.coffee</code>,
+                            <code>.json</code>,
+                            <code>.(s)css</code>,
+                            <code>.sass</code>,
+                            <code>.less</code>,
+                            <code>.html</code>
+                            and
+                            <code>.pug</code>
+                        </p>
+                    </section>
+                    <section>
+                        <h3>🎁️ No bundling</h3>
+                        <p>
+                            To reflect project structure in the browser and make it easier to understand and develop
+                        </p>
+                    </section>
+                    <section>
+                        <h3>🦋 Better debugging</h3>
+                        <p>
+                            Names alligned with the code, debugging tooltips, breakpoints for specific line or expression
+                        </p>
+                    </section>
+                    <section>
+                        <h3>🕸 Latest web standards</h3>
+                        <p>
+                            You can use cutting edge features even if your browser lacks them
+                        </p>
+                    </section>
+                    <section>
+                        <h3>⚡ Light and fast</h3>
+                        <p>
+                            Ships minimum that is required with no bundlers overhead, only the files that were changed
+                        </p>
+                    </section>
+                </div>
+                <section>
+                    <h2>VSCode extension</h2>
+                    <p class="vscode-section">
+                        Get
+                        <a class="vscode-link" href="https://marketplace.visualstudio.com/items?itemName=hqjs.hq-live-server" target="_blank">
+                            <img src="/vscode.png" class="vscode-icon" alt="VSCode">
+                            <span class="vscode-separator"></span>
+                            Visual Studio Code Extension
+                        </a>
+                        and run hq with single
+                        <a class="vscode-golive" href="https://marketplace.visualstudio.com/items?itemName=hqjs.hq-live-server" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M9 9H8c.55 0 1-.45 1-1V7c0-.55-.45-1-1-1H7c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1H6c-.55 0-1 .45-1 1v2h1v3c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-3h1v-2c0-.55-.45-1-1-1zM7 7h1v1H7V7zm2 4H8v4H7v-4H6v-1h3v1zm2.09-3.5c0-1.98-1.61-3.59-3.59-3.59A3.593 3.593 0 0 0 4 8.31v1.98c-.61-.77-1-1.73-1-2.8 0-2.48 2.02-4.5 4.5-4.5S12 5.01 12 7.49c0 1.06-.39 2.03-1 2.8V8.31c.06-.27.09-.53.09-.81zm3.91 0c0 2.88-1.63 5.38-4 6.63v-1.05a6.553 6.553 0 0 0 3.09-5.58A6.59 6.59 0 0 0 7.5.91 6.59 6.59 0 0 0 .91 7.5c0 2.36 1.23 4.42 3.09 5.58v1.05A7.497 7.497 0 0 1 7.5 0C11.64 0 15 3.36 15 7.5z"/>
+                            </svg>
+                            Go Live
+                        </a>
+                        button click.
+                    </p>
+                </section>
+                <section>
+                    <h2>Installation</h2>
+                    <p>
+                        Install it once with npm
+                        <code class="syntax">
+                            <span class="command">npm</span>
+                            install
+                            <span class="param">-g</span>
+                            <span class="content">@hqjs/hq</span>
+                        </code>
+                    </p>
+                </section>
+                <section>
+                    <h2>Usage</h2>
+                    Run inside project root
                     <code class="syntax">
-                        <span class="command">npm</span> install <span class="param">-g</span> <span class="content">@hqjs/hq</span>
-                    </code>
-                </p>
-            </section>
-            <section>
-                <h2>Usage</h2>
-                Run inside project root
-                <code class="syntax">
                         <span class="command">hq</span>
                     </code>
-            </section>
-            <section>
-                <h2>Why hq?</h2>
-                <p>
+                </section>
+                <section>
+                    <h2>Build</h2>
                     <p>
-                        There are many development tools out there, including <strong>browserify</strong>,
-                        <strong>webpack</strong>, <strong>rollup</strong> and <strong>parcel</strong>,
-                        that provide development servers. But all of them rely on bundling. While bundling might still
-                        be usefull for production, it makes the development experience quite a struggle.
+                        You can use
+                        <strong>hq</strong>
+                        to prepare your code for regular static server. Just type
+                        <code class="syntax">
+                            <span class="command">hq</span>
+                            <span class="param">build</span>
+                        </code>
+                        in a project root and build result will appear in
+                        <strong>dist</strong>
+                        folder. In case
+                        <strong>hq</strong>
+                        missed something - you can pass build target as an argument to build command. It will do proper tree shaking and consist of both
+                        <strong>module</strong>
+                        and
+                        <strong>nomodule</strong>
+                        versions.
+                        <p>
+                            ⚠️ Previous content of
+                            <strong>dist</strong>
+                            folder will be erased.
+                        </p>
+                        <p>
+                            ⚠️ This feature is experimental raise an
+                            <a href="https://github.com/hqjs/hq/issues" target="_blank">issue</a>
+                            if you experience a problem.
+                        </p>
+                    </p>
+                </section>
+                <section>
+                    <h2>Why hq?</h2>
+                    <p>
+                        <p>
+                            There are many development tools out there, including
+                            <strong>browserify</strong>,
+                            <strong>webpack</strong>,
+                            <strong>rollup</strong>
+                            and
+                            <strong>parcel</strong>, that provide development servers. But all of them rely on bundling. While bundling might still be usefull for production, it makes the development experience quite a struggle.
+                        </p>
+
+                        <p>
+                            Without bundling
+                            <strong>hq</strong>
+                            dramatically increases development speed by shipping only files that were changed and improves debugging by providing minimal transformation to a source.
+                        </p>
+
+                        <p>
+                            With
+                            <strong>hq</strong>
+                            you can start a new project instantly. Just type
+                            <strong>hq</strong>
+                            and you are ready for experiments. It supports all kinds of frameworks out of the box, so there is no need to learn all their different tools and know all the buzzwords.
+                        </p>
+
+                        <p>
+                            It is worth to say that
+                            <strong>hq</strong>
+                            requires no configuration, offering the familiar experience of working with a regular static server.
+                        </p>
+                    </p>
+                </section>
+                <section>
+                    <h2>Example</h2>
+                    <p>
+                        Let's say we have an existing Angular project and want to improve development experience with
+                        <strong>hq</strong>.
                     </p>
 
                     <p>
-                        Without bundling <strong>hq</strong> dramatically increases development speed by shipping only
-                        files that were changed and improves debugging by providing minimal transformation to a source.
+                        All, we need to do is to add our global style file and script to the head and body of
+                        <code>index.html</code>
+                        correspondingly. So when
+                        <strong>hq</strong>
+                        serves index, it will serve styles and scripts as well
                     </p>
 
-                    <p>
-                        With <strong>hq</strong> you can start a new project instantly. Just type <strong>hq</strong>
-                        and you are ready for experiments.
-                        It supports all kinds of frameworks out of the box, so there is no need to learn all their
-                        different tools and know all the buzzwords.
-                    </p>
-
-                    <p>
-                        It is worth to say that <strong>hq</strong> requires no configuration, offering the familiar
-                        experience of working with a regular static server.
-                    </p>
-                </p>
-            </section>
-            <section>
-                <h2>Example</h2>
-                <p>
-                    Let's say we have an existing Angular project and want to improve development experience with
-                    <strong>hq</strong>.
-                </p>
-
-                <p>
-                    All, we need to do is to add our global style file and script to the head and body of
-                    <code>index.html</code> correspondingly.
-                    So when <strong>hq</strong> serves index, it will serve styles and scripts as well
-                </p>
-
-                <pre>
+                    <pre>
 <code class="syntax">&lt;!doctype html&gt;
 &lt;<span class="command">html</span> <span class="param">lang</span>=<span class="arg">"en"</span>&gt;
 &lt;<span class="command">head</span>&gt;
@@ -205,109 +276,124 @@
 &lt;/<span class="command">html</span>&gt;
 </code></pre>
 
-                <p>
-                    For most of the frameworks that is already enough, and you can skip the next step, but Angular
-                    requires a bit more attention. It depends on <code>zones</code> and
-                    <code>Reflect.metadata</code> APIs
-                    that are on very early stages and are not supported by <strong>hq</strong> out of the box.
-                    In fact angular includes them into your code during the build.
-                    So we are going to import necessary polyfills on top of <code>main.ts</code>
-                </p>
+                    <p>
+                        For most of the frameworks that is already enough, and you can skip the next step, but Angular requires a bit more attention. It depends on
+                        <code>zones</code>
+                        and
+                        <code>Reflect.metadata</code>
+                        APIs that are on very early stages and are not supported by
+                        <strong>hq</strong>
+                        out of the box. In fact angular includes them into your code during the build. So we are going to import necessary polyfills on top of
+                        <code>main.ts</code>
+                    </p>
 
-                <pre>
+                    <pre>
 <code class="syntax"><span class="highlight"><span class="command">import</span> <span class="arg">'core-js/proposals/reflect-metadata'</span>;</span>
 <span class="highlight"><span class="command">import</span> <span class="arg">'zone.js/dist/zone'</span>;</span>
 <span class="highlight"><span class="command">import</span> <span class="arg">'zone.js/dist/zone-patch-canvas'</span>;</span>
 <span class="content">...</span>
 </code></pre>
-                <p>
-                    And that's it, now you are ready to start developing by running <strong>hq</strong> in the project
-                    root.
-                </p>
-            </section>
-            <section>
-                <h2>Is it good for production?</h2>
-                <p>
-                    Yes, it supports most of the projects in production mode (yet it is experimental at the moment,
-                    raise an <a href="https://github.com/hqjs/hq/issues" target=_blank>issue</a> if you experience the
-                    problem). To activate production mode set <code>NODE_ENV</code> to production before running
-                    <strong>hq</strong>
-                    <code class="syntax">
-                        <span class="arg">NODE_ENV</span>=<span class="content">production</span> <span class="command">hq</span>
-                    </code>
-                </p>
-            </section>
-            <section>
-                <h2>Does it support HTTP2?</h2>
-                <p>
-                    Yes, it does. Drop your certificate and a key somewhere in the root of your project and
-                    <strong>hq</strong> will serve it trough HTTP2 e.g.
-                    <pre>
+                    <p>
+                        And that's it, now you are ready to start developing by running
+                        <strong>hq</strong>
+                        in the project root.
+                    </p>
+                </section>
+                <section>
+                    <h2>Is it good for production?</h2>
+                    <p>
+                        Yes, it supports most of the projects in production mode (yet it is experimental at the moment, raise an
+                        <a href="https://github.com/hqjs/hq/issues" target="_blank">issue</a>
+                        if you experience the problem). To activate production mode set
+                        <code>NODE_ENV</code>
+                        to production before running
+                        <strong>hq</strong>
+                        <code class="syntax">
+                            <span class="arg">NODE_ENV</span>=<span class="content">production</span>
+                            <span class="command">hq</span>
+                        </code>
+                    </p>
+                </section>
+                <section>
+                    <h2>Does it support HTTP2?</h2>
+                    <p>
+                        Yes, it does. Drop your certificate and a key somewhere in the root of your project and
+                        <strong>hq</strong>
+                        will serve it trough HTTP2 e.g.
+                        <pre>
 <code class="syntax">cert/<span class="arg">server.pem</span>
 cert/<span class="arg">server-key.pem</span>
 </code></pre>
-                </p>
-            </section>
-            <section>
-                <h2>More benefits with .babelrc, .postcssrc and .posthtmlrc</h2>
-                <p>
-                    With <strong>hq</strong> you don't need to take care of babel, postcss or posthtml configuration,
-                    the latest web standards will be supported out of the box. However if you need to support a feature
-                    that does not have a common interpretation (like svg react imports) or experimental features from an
-                    early stage (like nested css), or you have your own plugins that only make sense in your project
-                    just add <strong>.babelrc</strong>, <strong>.postcssrc</strong> or <strong>.posthtmlrc</strong>
-                    configurations to the root of your project with the list of all desired plugins e.g.
-                    <br><br>
-                    <strong>.babelrc</strong>
-                    <pre>
+                    </p>
+                </section>
+                <section>
+                    <h2>More benefits with .babelrc, .postcssrc and .posthtmlrc</h2>
+                    <p>
+                        With
+                        <strong>hq</strong>
+                        you don't need to take care of babel, postcss or posthtml configuration, the latest web standards will be supported out of the box. However if you need to support a feature that does not have a common interpretation (like svg react imports) or experimental features from an early stage (like nested css), or you have your own plugins that only make sense in your project just add
+                        <strong>.babelrc</strong>,
+                        <strong>.postcssrc</strong>
+                        or
+                        <strong>.posthtmlrc</strong>
+                        configurations to the root of your project with the list of all desired plugins e.g.
+                        <br><br>
+                        <strong>.babelrc</strong>
+                        <pre>
 <code class="syntax">{
   <span class="command">"plugins"</span>: [
     <span class="arg">"babel-plugin-transform-remove-console"</span>
   ]
 }
 </code></pre>
-                    <strong>.postcssrc</strong>
-                    <pre>
+                        <strong>.postcssrc</strong>
+                        <pre>
 <code class="syntax">{
   <span class="command">"plugins"</span>: [
-    [<span class="arg">"postcss-nested"</span>, { <span class="arg">"preserveEmpty"</span>: <span class="param">true</span> }]
+    [<span class="arg">"postcss-nested"</span>, { <span class="arg">"preserveempty"</span>: <span class="param">true</span> }]
   ]
 }
 </code></pre>
-                    <strong>.posthtmlrc</strong>
-                    <pre>
+                        <strong>.posthtmlrc</strong>
+                        <pre>
 <code class="syntax">{
   <span class="command">"plugins"</span>: [
-    [<span class="arg">"posthtml-doctype"</span>, { <span class="arg">"doctype"</span> : <span class="param">"HTML 5"</span> }],
+    [<span class="arg">"posthtml-doctype"</span>, { <span class="arg">"doctype"</span> : <span class="param">"html 5"</span> }],
     <span class="arg">"posthtml-md"</span>
   ]
 }
 </code></pre>
-                    and it will be automatically merged with <strong>hq</strong> configuration. Do not forget to install
-                    these additional plugins to your project before running <strong>hq</strong>.
-                </p>
-            </section>
-            <section>
-                <h2>Looking for documentation? You don't need it!</h2>
-                <p>
-                    It just works out of the box. Install it now to create something fascinating
-                    <code class="syntax">
-                        <span class="command">npm</span> install <span class="param">-g</span> <span class="content">@hqjs/hq</span>
-                    </code>
-                </p>
-            </section>
-        </div>
-    </main>
-    <footer>Copyright © 2018-<span class="js-year"></span> hqjs</footer>
-    <script>
-        var refs = document.querySelectorAll('.js-year');
-        var year = new Date().getFullYear();
+                        and it will be automatically merged with
+                        <strong>hq</strong>
+                        configuration. Do not forget to install these additional plugins to your project before running
+                        <strong>hq</strong>.
+                    </p>
+                </section>
+                <section>
+                    <h2>Looking for documentation? You don't need it!</h2>
+                    <p>
+                        It just works out of the box. Install it now to create something fascinating
+                        <code class="syntax">
+                            <span class="command">npm</span>
+                            install
+                            <span class="param">-g</span>
+                            <span class="content">@hqjs/hq</span>
+                        </code>
+                    </p>
+                </section>
+            </div>
+        </main>
+        <footer>Copyright © 2018-<span class="js-year"></span>
+            hqjs</footer>
+        <script>
+            var refs = document.querySelectorAll('.js-year');
+            var year = new Date().getFullYear();
 
-        refs.forEach(function (ref) {
-            ref.innerText = year;
-        });
-    </script>
-    <script type="module" src="/index.js"></script>
-</body>
+            refs.forEach(function (ref) {
+                ref.innerText = year;
+            });
+        </script>
+        <script type="module" src="/index.js"></script>
+    </body>
 
 </html>
