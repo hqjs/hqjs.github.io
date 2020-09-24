@@ -207,11 +207,6 @@
                             <strong>dist</strong>
                             folder will be erased.
                         </p>
-                        <p>
-                            ⚠️ This feature is experimental raise an
-                            <a href="https://github.com/hqjs/hq/issues" target="_blank">issue</a>
-                            if you experience a problem.
-                        </p>
                     </p>
                 </section>
                 <section>
@@ -302,9 +297,17 @@
                 <section>
                     <h2>Is it good for production?</h2>
                     <p>
-                        Yes, it supports most of the projects in production mode (yet it is experimental at the moment, raise an
-                        <a href="https://github.com/hqjs/hq/issues" target="_blank">issue</a>
-                        if you experience the problem). To activate production mode set
+                        Yes, you can definitely use build command to make a production ready build with all necessary optimisations created for you by
+                        <strong>hq</strong>.
+                        <code class="syntax">
+                            <span class="command">hq</span>
+                            <span class="param">build</span>
+                        </code>
+                    </p>
+                    <p>
+                        Alternatively you can use
+                        <strong>hq</strong>
+                        as a production server for internal projects such as admin panels and dashboards. It will work perfectly with all modern browsers. To activate production server mode set
                         <code>NODE_ENV</code>
                         to production before running
                         <strong>hq</strong>
@@ -324,6 +327,8 @@
 <code class="syntax">cert/<span class="arg">server.pem</span>
 cert/<span class="arg">server-key.pem</span>
 </code></pre>
+                        For generating self signed certificates check this
+                        <a target="_blank" href="https://github.com/FiloSottile/mkcert">tool</a>.
                     </p>
                 </section>
                 <section>
